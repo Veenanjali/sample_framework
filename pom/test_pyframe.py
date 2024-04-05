@@ -6,7 +6,7 @@ obj = Options()
 obj.add_experimental_option("detach",True)
 from  time import *
 
-@pytest.fixture
+
 def setup():
     # Initialize WebDriver
     driver = webdriver.Chrome(options=obj)
