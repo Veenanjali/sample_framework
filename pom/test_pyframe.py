@@ -6,17 +6,16 @@ obj = Options()
 obj.add_experimental_option("detach",True)
 from  time import *
 
-
-# def setup():
-#     # Initialize WebDriver
-#     driver = webdriver.Chrome(options=obj)
-#     yield driver
-#     # Cleanup after test execution
-#     driver.quit()
-
-def test_successful_login():
+@pytest.fixture
+def setup():
+    # Initialize WebDriver
     driver = webdriver.Chrome(options=obj)
-    login_page = LoginPage()
+    yield driver
+    # Cleanup after test execution
+    driver.quit()
+
+def test_successful_login(setup):
+    login_page = LoginPage(setup)
     login_page.open()
     sleep(2)
     login_page.enter_username('student')
@@ -24,9 +23,8 @@ def test_successful_login():
     login_page.click_login_button()
     #assert login_page.is_logged_in()
 
-def test_invalid_login():
-    driver = webdriver.Chrome(options=obj)
-    login_page = LoginPage()
+def test_invalid_login(setup):
+    login_page = LoginPage(setup)
     login_page.open()
     sleep(5)
     login_page.enter_username('invalid_user@example.com')
