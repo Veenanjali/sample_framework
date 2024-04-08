@@ -1,4 +1,4 @@
-from pom.locators import Locate
+from locators import Locate
 from selenium.webdriver.common.by import By
 
 class LoginPage:
