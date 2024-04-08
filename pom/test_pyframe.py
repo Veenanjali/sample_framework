@@ -2,18 +2,15 @@ import pytest
 from selenium import webdriver
 from frame import LoginPage
 from selenium.webdriver.chrome.options import Options
-from time import sleep
-
-chrome_driver_path = "/usr/local/bin/chromedriver"
+obj = Options()
+#obj.add_experimental_option("detach",True)
+obj.add_argument('--headless')
+from  time import *
 
 @pytest.fixture
 def setup():
-    # Initialize ChromeOptions
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-
-    # Initialize WebDriver with ChromeOptions
-    driver = webdriver.Chrome(options=chrome_options)
+    # Initialize WebDriver
+    driver = webdriver.Chrome(options=obj)
     yield driver
     # Cleanup after test execution
     driver.quit()
