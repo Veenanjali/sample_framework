@@ -13,7 +13,7 @@ def setup():
     chrome_options.add_argument('--headless')
 
     # Initialize WebDriver with ChromeOptions
-    driver = webdriver.Chrome(executable_path=chrome_driver_path, options=chrome_options)
+    driver = webdriver.Chrome(chrome_driver_path, options=chrome_options)
     yield driver
     # Cleanup after test execution
     driver.quit()
