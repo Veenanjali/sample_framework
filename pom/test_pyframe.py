@@ -5,12 +5,13 @@ from selenium.webdriver.chrome.options import Options
 obj = Options()
 #obj.add_experimental_option("detach",True)
 obj.add_argument('--headless')
+chrome_driver_path =/usr/local/bin/chromedriver
 from  time import *
 
 @pytest.fixture
 def setup():
     # Initialize WebDriver
-    driver = webdriver.Chrome(options=obj)
+    driver = webdriver.Chrome(executable_path=chrome_driver_path,options=obj)
     yield driver
     # Cleanup after test execution
     driver.quit()
