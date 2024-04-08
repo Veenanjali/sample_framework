@@ -5,6 +5,8 @@ from selenium.webdriver.firefox.options import Options
 obj = Options()
 #obj.add_experimental_option("detach",True)
 obj.add_argument('--headless')
+obj.add_argument('--nosandbox')
+obj.add_argument('--disable-dev-shm-usage')
 from  time import *
 
 @pytest.fixture
