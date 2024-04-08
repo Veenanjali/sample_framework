@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from frame import LoginPage
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 obj = Options()
 #obj.add_experimental_option("detach",True)
 obj.add_argument('--headless')
@@ -10,7 +10,7 @@ from  time import *
 @pytest.fixture
 def setup():
     # Initialize WebDriver
-    driver = webdriver.Chrome(options=obj)
+    driver = webdriver.Firefox(options=obj)
     yield driver
     # Cleanup after test execution
     driver.quit()
